@@ -1,4 +1,13 @@
 from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
+
+options=Options()
+options.add_argument('--no-sandbox')
+options.add_argument('--disable-dev-shm-usage')
+options.add_argument('--disable-gpu')
+options.add_argument('--disable-extensions')
+options.add_argument('headless')
+
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
@@ -18,7 +27,7 @@ import json
 def process_metadata(handles):
 
     handles=[handles]
-    driver=webdriver.Chrome(executable_path="C:\Program Files\chrome driver\chromedriver.exe")
+    driver=webdriver.Chrome(executable_path="/usr/lib/chromium-browser/chromedriver", chrome_options=options)
     driver.wait = WebDriverWait(driver, 5)
     
  
